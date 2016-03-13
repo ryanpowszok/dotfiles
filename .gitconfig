@@ -1,0 +1,246 @@
+[user]
+    name = Ryan Powszok
+    email = ryan@jukelabs.com
+
+[github]
+    user = ryanpowszok
+
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+    pager=less
+    whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+    quotepath = false
+
+[apply]
+    whitespace = nowarn
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    page = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[push]
+    # push the current branch to its upstream branch when no refspec given
+    default = tracking
+
+[branch]
+    # When branching off a remote branch, automatically let the local branch track the remote branch
+    autosetupmerge = true
+
+[branch "master"]
+    # This is the list of cmdline options that should be added to git-merge
+    # when I merge commits into the master branch.
+
+    # First off, the option --no-commit instructs git not to commit the merge
+    # by default. This allows me to do some final adjustment to the commit log
+    # message before it gets commited. I often use this to add extra info to
+    # the merge message or rewrite my local branch names in the commit message
+    # to branch names sensible to the casual reader of the git log.
+
+    # Option --no-ff instructs git to always record a merge commit, even if
+    # the branch being merged into can be fast-forwarded. This is often the
+    # case when you create a short-lived topic branch which tracks master, do
+    # some changes on the topic branch and then merge the changes into the
+    # master which remained unchanged while you were doing your work on the
+    # topic branch. In this case the master branch can be fast-forwarded (that
+    # is the tip of the master branch can be updated to point to the tip of
+    # the topic branch) and this is what git does by default. With --no-ff
+    # option set git creates a real merge commit which records the fact that
+    # another branch was merged. I find this easier to understand and read in
+    # the log.
+    #
+    # mergeoptions = --no-commit --no-ff
+    mergeoptions = --no-ff
+
+    [merge]
+    tool = opendiff
+    # show a diffstat at the end of a merge
+    stat = true
+
+[diff]
+    tool = opendiff
+    # do basic rename and copy detection
+    renames = copies
+    # Tell git diff to use mnemonic prefixes (i)ndex, (w)ork tree, (c)ommit, (o)bject - instead of the standard (a) and (b) notation
+    mnemonicprefix = true
+
+[format]
+    pretty="format:%Cred%ae %Creset- %C(yellow)%h %s %Creset(%ar)"
+
+[help]
+    autocorrect=1
+
+[log]
+    date=short
+
+[url "git@github.com:"]
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+    insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+    insteadOf = "gist:"
+
+[alias]
+
+    # ADD
+    a = add                             # simple add
+    addp = add --patch                  # add only part of the commit to index
+    add-all = add -A                    # add all files noting modifications/deletions
+
+    # BRANCH
+    branches = branch -v                # branch verbose
+    b = branch -v                       # branch verbose
+    ba = branch -a -v                   # show all branches, even across remotes
+    br = branch -r -v                   # show remote branches
+    bl = branch -l -v                   # show local branches
+    brd = branch -vrd                   # delete a remote-tracking branch
+
+    # CLONE
+    cl = clone                          # clone
+    clone-shallow = clone --depth 1     # shallow clone a repository, because we don't care about history
+
+    # CONFIG
+    conf = config --global -l           # show global git config
+    aliases = !sh -c 'git config --global -l | grep alias' # show global aliases
+    user = !sh -c 'git config --global -l | grep user' # show git user settings
+
+    # COMMIT
+    x = commit -m                       # commit
+    xa = commit -a -m                   # commit all
+    ci = commit                         # commit
+    c = commit -m                       # commit with message
+    ca = !sh -c 'git add && git commit -a -m "'$*'"' # add & commit at once
+    cal = commit -a -m                  # commit all with message
+    cq = commit -a --allow-empty-message -m '' . # commit all quick with no message
+    amend = commit --amend              # amend your last commit
+    #amend = commit --amend -C HEAD     # amend to the last commit
+    fix = commit -am "fix"              # "fix" commit
+
+    # CHECKOUT
+    co = checkout                       # checkout
+    nb = checkout -b                    # create and switch to a new branch (mnemonic: "git new branch branchname...")
+    revert = checkout HEAD^             # revert specified file (or all without given filename) to HEAD.
+    revert-master = checkout master^    # revert specified file (or all without given filename) to master.
+                                        # Note: you can revert a number of commits with HEAD~n || master~n
+    resolve-ours = checkout --ours      # merge conflict scenario: checkout our version
+    resolve-theirs = checkout --theirs  # merge conflict scenario: checkout their version
+
+    # CHERRY PICK
+    cp = cherry-pick -x                 # grab a change from a branch
+
+    # DIFF
+    df = diff                           # diff: working copy with the HEAD
+    dc = diff --cached                  # diff staged changes: index with HEAD
+    du = diff HEAD                      # diff uncommitted changes
+    last = diff HEAD^                   # diff last committed change: working copy with HEAD
+    staged = diff --cached              # diff the index against the previous commit
+    unpushed-diff = diff origin/master..HEAD # show files committed by not pushed
+
+    # FETCH
+    fetch-tags = fetch --tags           # fetch tags
+
+    # GC
+    cleanup = gc --prune=now            # garbage collection with pruning
+
+    # IGNORE
+    ignored = ls-files -o -i --exclude-standard # Show files ignored by git
+
+    # LOG
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    h = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg = log --format="%h %ad | %s%d [%an]" --graph --date=short
+    unpushed = log origin..             # show files committed but not yet pushed
+    ls = ls-files
+    last = log -1 HEAD                  # show last log item
+    who = shortlog -s --
+
+    # MERGE
+    fold = merge --no-ff                # merge the branch, keeping its commits in their own branch
+
+    # PULL
+    pl = pull                           # pull
+
+    # PUSH
+    ps = push                           # push
+    push-tags = push origin master --tags
+    mirror = push --mirror             # mirror branches (including deletions) and tags
+    rvmaster = push origin HEAD:refs/for/master
+
+    # REBASE
+    rc = rebase --continue             # continue rebase
+    rs = rebase --skip                 # skip rebase
+    ri = rebase --interactive --autosquash  # interactive rebase
+
+    # REMOTE
+    remotes = remote -v                # show remotes (verbose)
+    update-remotes = remote update --prune # update all remotes, pruning removed tracking branches
+
+    # RESET
+    unadd = reset HEAD
+    unstage = reset HEAD --             # remove files from index (tracking)
+    uncommit = reset --soft HEAD^       # go back before last commit, with files in uncommitted state
+    filelog = log -u                    # show changes to a file
+    mt = mergetool                      # fire up the merge tool
+    goto = reset --hard                 # put this branch at a particular ref
+
+    # STASH
+    ss = stash                          # stash changes
+    sl = stash list                     # list stashes
+    sa = stash apply                    # apply stash (restore changes)
+    sd = stash drop                     # drop stashes (destory changes)
+
+    # STATUS
+    s = status                          # status
+    st = status -sb                     # better status
+    stat = status                       # status
+
+    # TAG
+    tags = tag -l                       # show all tags
+    t = tag -n                          # show tags with <n> lines of each tag message
+    tag-release = !sh -c 'git tag release/`date +%Y/%m/%d/%H%M`' # tags a release with 'release/YYYY-MM-DD-HH-MM-SS'
+    label = tag -a                      # set a tag
+    tag-add = label                     # add a tag with given name
+    tag-rm = tag -d                     # delete tag with given name
+    tag-replace = tag -f                # replace an existing tag with given name
+    tag-sign = tag -s -a                # GPG signed tag with given name
+    tag-verify = tag -v                 # verify a GPG signed tag
+
+    # TRACK
+    track = checkout -t                 # track a remote branch
+
+    # SVN
+    svnr = svn rebase
+    svnd = svn dcommit
+    svnl = svn log --oneline --show-commit
+
+[credential]
+    helper = osxkeychain
