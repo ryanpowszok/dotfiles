@@ -6,8 +6,8 @@ _These are my dotfiles; there are many like them, but these are mine._
 
 * Version: 1.0.0
 * Developer: Ryan Powszok
-* Website: [http://ryanpowszok.com](http://ryanpowszok.com)
-* Copyright: (c) 2016 Ryan Powszok / Juke Labs Inc.
+* Website: [http://jukelabs.com](http://jukelabs.com)
+* Copyright: (c) 2016 Ryan Powszok / Juke Labs, Inc.
 
 ## Overview
 
@@ -16,7 +16,7 @@ Collection of my dotfiles.
 License
 -------------------------------------
 
-Copyright © 2016 Ryan Powszok / Jukelabs, Inc. All Rights Reserved.
+Copyright © 2016 Ryan Powszok / Juke Labs, Inc. All Rights Reserved.
 
 Released under the MIT License: [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
 
