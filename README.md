@@ -16,7 +16,7 @@ Collection of my dotfiles.
 License
 -------------------------------------
 
-Copyright © 2011-2012 Jason M Horwitz / Sekati LLC. All Rights Reserved.
+Copyright © 2016 Ryan Powszok / Jukelabs, Inc. All Rights Reserved.
 
 Released under the MIT License: [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
 
