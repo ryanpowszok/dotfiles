@@ -12,3 +12,6 @@ fi
 
 # Git Alias
 alias g="git"
+
+# Mamp Mysql Alias
+[[ -d "/Applications/MAMP" ]] && alias mysql="/Applications/MAMP/Library/bin/mysql"
