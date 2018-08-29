@@ -1,9 +1,9 @@
 [user]
-    name = Ryan Powszok
-    email = ryan@jukelabs.com
+    # name = <replace-me> Your name
+    # email = <replace-me> Your email
 
 [github]
-    user = ryanpowszok
+    # user = <replace-me> Your username
 
 [core]
     excludesfile = ~/.gitignore

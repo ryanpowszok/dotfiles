@@ -1,0 +1,5 @@
+# Git Alias
+alias g=git
+
+# Git Alias Bash Completion
+complete -o bashdefault -o default -o nospace -F _git g

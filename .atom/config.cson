@@ -1,0 +1,25 @@
+"*":
+  core:
+    projectHome: "~/Sites"
+    telemetryConsent: "no"
+  editor:
+    fontSize: 12
+  "fuzzy-finder":
+    ignoredNames: [
+      ".git"
+      "._*"
+      "node_modules"
+      "dist"
+      "bower_components"
+      "vendor"
+      "*.svg"
+      "*.jpg"
+      "*.png"
+      "*.ico"
+      "*.jepg"
+      "*.gif"
+    ]
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
