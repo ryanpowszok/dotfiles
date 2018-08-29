@@ -5,7 +5,7 @@ _These are my dotfiles; there are many like them, but these are mine._
 
 * Version: 1.1.0
 * Developer: Ryan Powszok
-* Website: [https://ryanpowszok.com](https://ryanpowszok.com)
+* Website: [ryanpowszok.com](https://ryanpowszok.com)
 * Copyright: (c) 2018 Ryan Powszok / Juke Labs, Inc.
 
 ## Overview
