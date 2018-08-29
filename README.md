@@ -10,7 +10,7 @@ _These are my dotfiles; there are many like them, but these are mine._
 
 ## Overview
 
-Collection of my dotfiles.
+Collection of my dotfiles. If you choose to use these files, make sure you search and replace `<replace-me>`.
 
 ## Commands
 
@@ -21,14 +21,7 @@ $ apm install `cat .atom/packages.list`
 
 ```
 Fix SSH Permissions
-$ mkdir -p ~/.ssh
-Copy SSH Keys & SSH config file
-$ chmod 700 ~/.ssh
-$ chmod 600 ~/.ssh/*
-$ chmod 644 ~/.ssh/*.pub
-$ chmod 644 ~/.ssh/authorized_keys
-$ chmod 644 ~/.ssh/known_hosts
-$ chmod 644 ~/.ssh/config
+$ curl https://raw.githubusercontent.com/ryanpowszok/fix-yer-setup/master/fixSSHPermissions.sh | bash -s
 ```
 
 License
