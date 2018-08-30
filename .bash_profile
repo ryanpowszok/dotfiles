@@ -1,18 +1,21 @@
 # Add `~/.local/bin` to the `$PATH`
 export PATH=$HOME/.local/bin:$PATH
 
+# Source .profile file
+[[ -f ~/.profile ]] && \. ~/.profile;
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{profile,exports,aliases}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+for file in ~/.{exports,aliases}; do
+	[ -r "$file" ] && [ -f "$file" ] && \. "$file";
 done;
 unset file;
 
 # Ensure user-installed binaries take precedence
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-# Add tab completion for Bash
+# Add tab completion for many Bash commands
 if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
 	. "$(brew --prefix)/share/bash-completion/bash_completion";
 elif which brew &> /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
@@ -33,14 +36,10 @@ export NVM_DIR="$HOME/.nvm"
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Composer
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
 # MAMP
 PHP_VERSION=$(ls /Applications/MAMP/bin/php/ | sort -n | tail -1)
-export PATH=/Applications/MAMP/bin/php/${PHP_VERSION}/bin:$PATH
-
-# MAMP MYSQL, (Optional) you may choose to run mysql with brew services
-# [[ -d "/Applications/MAMP" ]] && alias mysql="/Applications/MAMP/Library/bin/mysql"
-
-# Better Bash History
-export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+[[ -d "/Applications/MAMP" ]] && export PATH="/Applications/MAMP/bin/php/${PHP_VERSION}/bin:$PATH"
+[[ -d "/Applications/MAMP" ]] && export PATH="/Applications/MAMP/Library/bin:$PATH"
