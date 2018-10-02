@@ -8,21 +8,23 @@ export PATH=$HOME/.local/bin:$PATH
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{exports,aliases}; do
-	[ -r "$file" ] && [ -f "$file" ] && \. "$file";
+  [ -r "$file" ] && [ -f "$file" ] && \. "$file";
 done;
 unset file;
 
 # Ensure user-installed binaries take precedence
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-# Add tab completion for many Bash commands
-if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-	. "$(brew --prefix)/share/bash-completion/bash_completion";
-elif which brew &> /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-	. "$(brew --prefix)/etc/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion;
-fi;
+# Add bash tab completion for Homebrew
+if type brew &>/dev/null; then
+  [[ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]] && \. "$(brew --prefix)/share/bash-completion/bash_completion"
+  [[ -f "$(brew --prefix)/etc/bash_completion" ]] && \. "$(brew --prefix)/etc/bash_completion"
+  for completion_file in $(brew --prefix)/etc/bash_completion.d/*; do
+    source "$completion_file"
+  done
+else
+  [[ -f "/etc/bash_completion" ]] && \. "/etc/bash_completion"
+fi
 
 # RVM
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
